@@ -1,0 +1,75 @@
+name: Convert xv6-riscv-book to HTML
+
+on: [push]
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-24.04
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout xv6-riscv-book
+        uses: actions/checkout@v4
+        with:
+          repository: mit-pdos/xv6-riscv-book
+          path: xv6-riscv-book
+
+      - name: Install dependencies
+        run: |
+          export DEBIAN_FRONTEND=noninteractive
+          sudo apt-get -qq update > /dev/null
+          sudo apt-get -qq install ghostscript make latexmk dvisvgm preview-latex-style texlive-extra-utils zip latexml > /dev/null
+          sudo apt-get -qq install texlive-latex-base > /dev/null
+          sudo apt-get -qq install texlive-latex-extra > /dev/null
+
+      - name: Patch xv6-riscv-book
+        run: |
+          git apply ../patches/xv6-riscv-book/*.patch
+        working-directory: xv6-riscv-book
+
+      - name: Build book
+        run: make > /dev/null
+        working-directory: xv6-riscv-book
+
+      - name: Get latest bookml release
+        run: |
+          wget https://github.com/vlmantova/bookml/releases/latest/download/release.zip
+          unzip release.zip
+        working-directory: xv6-riscv-book
+
+      - name: Use custom CSS
+        run: |
+          mkdir -p xv6-riscv-book/bmluser
+          cp -v patches/bookml/css/* xv6-riscv-book/bmluser
+
+      - name: Build html
+        run: |
+          cp bookml/GNUmakefile .
+          make -f GNUmakefile > /dev/null
+        working-directory: xv6-riscv-book
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: xv6-riscv-book/auxdir/html/book
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

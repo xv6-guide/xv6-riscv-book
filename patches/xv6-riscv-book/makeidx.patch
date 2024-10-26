@@ -1,0 +1,13 @@
+diff --git a/book.tex b/book.tex
+index 09045c3..bc5cd20 100644
+--- a/book.tex
++++ b/book.tex
+@@ -6,7 +6,7 @@
+ \usepackage{xcolor}
+ \usepackage{url}
+ % \usepackage{showidx}
+-\usepackage{imakeidx}
++\usepackage{makeidx}
+ \usepackage{booktabs}
+ \usepackage{url}
+ \usepackage{etoolbox}  % for showidx

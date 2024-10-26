@@ -1,0 +1,13 @@
+diff --git a/book.tex b/book.tex
+index 09045c3..ac3539c 100644
+--- a/book.tex
++++ b/book.tex
+@@ -35,7 +35,7 @@
+ 
+ \newcommand{\indextext}[1]{\textit{#1}\index{#1}}
+ \newcommand{\indextextx}[1]{{#1}\index{#1}}
+-\newcommand{\indexcode}[1]{\lstinline{#1}\index{#1@\lstinline{#1}}}
++\newcommand{\indexcode}[1]{\lstinline{#1}\index{\detokenize{#1}@\lstinline{#1}}}
+ 
+ %% editing markup
+ \newcommand{\insertnote}[3]{\noindent\textcolor{#1}{\textbf{#2:} #3}}

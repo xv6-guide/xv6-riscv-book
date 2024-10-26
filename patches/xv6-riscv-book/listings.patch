@@ -1,0 +1,40 @@
+diff --git a/book.tex b/book.tex
+index 09045c3..4be4132 100644
+--- a/book.tex
++++ b/book.tex
+@@ -45,6 +45,35 @@
+ %% for publishing book without notes
+ %\renewcommand{\insertnote}[3]{}
+ 
++% Define color scheme
++\definecolor{background}{rgb}{0.95, 0.95, 0.92}   % Light gray background
++\definecolor{keyword}{rgb}{0.5, 0.0, 0.5}         % Purple keywords
++\definecolor{comment}{rgb}{0.3, 0.7, 0.3}         % Green comments
++\definecolor{string}{rgb}{0.58, 0.0, 0.82}        % Deep purple strings
++\definecolor{identifier}{rgb}{0.0, 0.0, 0.5}      % Dark blue identifiers
++\definecolor{preprocessor}{rgb}{0.0, 0.5, 0.5}    % Teal preprocessor directives
++
++% Configure listings
++\lstset{
++    language=C,
++    backgroundcolor=\color{background},    % Background color
++    basicstyle=\ttfamily\footnotesize,     % Font style
++    keywordstyle=\color{keyword}\bfseries, % Keywords in bold purple
++    commentstyle=\color{comment}\itshape,  % Italic green comments
++    stringstyle=\color{string},            % String literals
++    identifierstyle=\color{identifier},    % Identifiers (variable names)
++    showstringspaces=false,                % Don't show spaces in strings
++    numbers=left,                          % Line numbers on the left
++    numberstyle=\tiny\color{gray},         % Gray line numbers
++    numbersep=8pt,                         % Spacing for line numbers
++    frame=single,                          % Frame around code block
++    rulecolor=\color{black},               % Frame color
++    tabsize=4,                             % Tab size
++    captionpos=b,                          % Caption at the bottom
++    breaklines=true,                       % Line breaking
++    prebreak=\textbackslash,               % Character to show line break
++}
++
+ \title{\textbf{xv6: a simple, Unix-like teaching operating system}}
+ \author{Russ Cox \and Frans Kaashoek \and Robert Morris}
+ 

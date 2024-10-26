@@ -1,0 +1,60 @@
+diff --git a/book.bib b/book.bib
+index 1351754..4c5c52e 100644
+--- a/book.bib
++++ b/book.bib
+@@ -35,18 +35,18 @@
+  title = {Fundamental Algorithms. The Art of Computer Programming. (Second ed.)},
+  year = 1997,
+  volume = 1,
+- publisher =  Addison-Wesley,
++ publisher = {Addison-Wesley},
+  isbn = {0-201-89683-4},
+ }
+ 
+-@document{riscv:priv,
++@misc{riscv:priv,
+   title = {The {RISC-V} instruction set manual {Volume II}: privileged specification},
+   editor = {Andrew Waterman and Krste Asanovic and John Hauser},
+   year = 2024,
+   howpublished = {\url{https://drive.google.com/file/d/1uviu1nH-tScFfgrovvFCrj7Omv8tFtkp/view?usp=drive_link}},
+ }
+ 
+-@document{riscv:user,
++@misc{riscv:user,
+   title = {The {RISC-V} instruction set manual {Volume I}: unprivileged specification {ISA}},
+   editor = {Andrew Waterman and Krste Asanovic},
+   year = 2024,
+@@ -63,14 +63,14 @@
+  publisher = {Prentice Hall Professional Technical Reference},
+ } 
+ 
+-@document{u54,
++@misc{u54,
+    author = {SiFive},
+    title = {SiFive {FU540-C000} manual},
+    howpublished={\url{https://sifive.cdn.prismic.io/sifive%2F590bbcb6-598e-4ed8-b5d3-88c2c7458ebf_u54-core-complex-manual-v19.05.pdf}},
+    year = "2018",
+ }
+ 
+-@document{virtio,
++@misc{virtio,
+   author = {{OASIS} Open},
+   title = {Virtual {I/O} Device ({VIRTIO}) Version 1.0},
+   year = "2016",
+@@ -79,14 +79,14 @@
+ }
+ 
+ 
+-@document{dijkstra65,
++@misc{dijkstra65,
+   author = {Edsger Dijkstra},
+   title = {Cooperating Sequential Processes},
+   year = "1965",
+   howpublished={\url{https://www.cs.utexas.edu/users/EWD/transcriptions/EWD01xx/EWD123.html}},
+ }
+                   
+-@document{ns16550a,
++@misc{ns16550a,
+   author = {Martin Michael and Daniel Durich},
+   year = "1987",
+   title = {The {NS16550A}: {UART} Design and Application Considerations},
